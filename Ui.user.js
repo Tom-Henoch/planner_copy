@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://tasks.office.com/FR/Home/Planner
+// @match        https://tasks.office.com/*
 // @grant       GM_getResourceText
 // @grant       GM_addStyle
 // @require      https://code.jquery.com/jquery-3.5.1.min.js
