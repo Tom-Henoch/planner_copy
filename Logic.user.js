@@ -241,7 +241,6 @@ async function copyPlanData(target_plan) {
     let target_summary = await App.api.getPlan(target_plan); // Need to be here, else wrong data from getPlanData
     let target_data = await App.api.getPlanData(target_plan);
 
-console.log(target_data);
     let orig_data = {
         Plan: Object.assign({}, target_data.Plan),
         Details: Object.assign({}, target_data.PlanDetails)
@@ -250,9 +249,9 @@ console.log(target_data);
         Plan: Object.assign({}, target_data.Plan),
         Details: Object.assign({}, target_data.PlanDetails)
     };
-console.log(orig_data, new_data)
+
     new_data.Details.Categories = App.plan_data.Details.Categories;
-    console.log(orig_data, new_data)
+
 
     await App.api.updatePlan(orig_data, new_data);
 
