@@ -25,7 +25,7 @@ const HTML = `
 <select id="plans"></select></p>
 
 
-<p><button id="copy">Copier</button></p>
+<p><button id="copy">Copier</button><span id="status"></span></p>
 </div>
 `
 
