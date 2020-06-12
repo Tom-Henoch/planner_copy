@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Logic
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
+// @version      1.0
+// @description  Reverse Planner API, to copy tasks and buckets
 // @author       You
 // @match        https://tasks.office.com/*
 // @require      https://code.jquery.com/jquery-3.5.1.min.js
