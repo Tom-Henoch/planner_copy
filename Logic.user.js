@@ -158,10 +158,6 @@ const App = {
     }
 }
 
-const api = new API();
-var plan_id
-
-
 function updatePlans() {
     let cgroup = $('#groups').val();
     App.filtered_plans = App.plans.filter(plan => plan.group_id == cgroup);
@@ -219,7 +215,7 @@ async function copyTask(task, target_bucket, target_plan) {
     }
 
     let t = task.Task;
-    //t.AppliedCategories = []; //todo voir si possible (etiquette)
+    //t.AppliedCategories = []; // Copy tags
     t.Assignments = {};
     delete t.CompletedBy;
     delete t.CompletedDate;
@@ -275,8 +271,18 @@ async function launchCopy() {
 }
 
 setTimeout(async () => {
+    // Populate App data
     App.groups = await App.api.getGroups();
-    App.plans = await App.api.getPlans(App.groups);
+
+    // Need to call getPlans with a maximum of 14 ids
+    const MaxSlice = 12;
+    for (let i =0; i < Math.trunc(App.groups.length/MaxSlice); i++) {
+        let begin = i * MaxSlice;
+        let end = Math.min(begin + MaxSlice, App.groups.length)
+        let sliced = App.groups.slice(begin, end);
+        console.log(sliced);
+        App.plans.concat(await App.api.getPlans(sliced));
+    }
     App.plan_data = await App.api.getPlan(App.current_plan);
 
     $('#groups').on('change', () => updatePlans());
