@@ -280,7 +280,6 @@ setTimeout(async () => {
         let begin = i * MaxSlice;
         let end = Math.min(begin + MaxSlice, App.groups.length)
         let sliced = App.groups.slice(begin, end);
-        console.log(sliced);
         App.plans = App.plans.concat(await App.api.getPlans(sliced));
     }
     App.plan_data = await App.api.getPlan(App.current_plan);
