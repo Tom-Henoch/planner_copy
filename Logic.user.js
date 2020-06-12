@@ -276,7 +276,7 @@ setTimeout(async () => {
 
     // Need to call getPlans with a maximum of 14 ids
     const MaxSlice = 12;
-    for (let i =0; i < Math.trunc(App.groups.length/MaxSlice); i++) {
+    for (let i =0; i < Math.round(App.groups.length/MaxSlice); i++) {
         let begin = i * MaxSlice;
         let end = Math.min(begin + MaxSlice, App.groups.length)
         let sliced = App.groups.slice(begin, end);
